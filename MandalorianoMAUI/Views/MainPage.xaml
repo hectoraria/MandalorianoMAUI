@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MandalorianoMAUI.Views.MainPage"
+             xmlns:vm="clr-namespace:MandalorianoMAUI.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:ListadoMisionesVM></vm:ListadoMisionesVM>
+    </ContentPage.BindingContext>
+    <AbsoluteLayout>
+        <ScrollView
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <Picker Title="Misiones" 
+                        ItemsSource="{Binding ListadoMisiones}"
+                        SelectedItem="{Binding SeleccionarMision}"
+                        ItemDisplayBinding="{Binding Nombre}">
+
+                    
+                        
+                    
+                </Picker>
+                <Frame Padding="10"
+                        Margin="5"
+                        BorderColor="#E0E0E0"
+                        BackgroundColor="Black"
+                        InputTransparent="False">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding SeleccionarMision.Nombre}"></Label>
+                        <Label Text="{Binding SeleccionarMision.Descripcion}"></Label>
+                        <Label Text="{Binding SeleccionarMision.Recompensa}"></Label>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+       
+        </ScrollView>
+
+        <Button Command="{Binding Completar}"
+                BackgroundColor="BurlyWood"
+                AbsoluteLayout.LayoutBounds="0.99,0.80,90,45"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Text="Detalles"></Button>
+    </AbsoluteLayout>
+</ContentPage>

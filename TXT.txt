@@ -1,0 +1,95 @@
+ENT
+	clsMision
+		- int id
+		- String nombre
+		- String descripcion
+		- double recompensa
+
+
+		+ int Id{get,}
+		+ String Nombre{get,set}
+		+ String Descripcion{get,set}
+		+ double Recompensa {get,set}
+		
+		public clsMision(){}
+		public clsMision(id,nombre,descripcion,recompensa){}
+
+
+DAL
+	clsListadosDAL
+		- List<clsMision> listadoMisiones = new List<ClsMision>{}
+		public static List<clsMisiones> obtenerlistadoMisionesDAL(){}
+		public static ClsMision obtenerMisionPorIdDAL(int idMision){}
+
+BL
+	clsListadosBL
+		//Regla que solo esten las misiones con una recompensa mayor 10000
+		public static List<clsMisiones> obtenerlistadoMisionesBL(){}
+		public static ClsMision obtenerMisionPorIdBL(int idMision){}
+UI
+
+	Model
+		clsMisionCompletada : clsMision
+			-DateTime fechaFinalizada
+
+			+DateTime FechaFinalizada{get,set}
+
+			public clsMisionCompletada(clsMision) {}
+
+			//Metodo para enviar el tiempo cuando se completa la mision
+			- void fechaCompletada()
+			{
+				return this.fechaFinalizada
+			}
+
+
+
+
+	
+	ViewModel
+		ListadoMisionesVM: INotify
+			-DelegateCommand completar;
+			-List<clsMision> listadoMisiones;
+			-clsMision seleccionarMision;
+
+			+DelegateCommand Completar {get,}
+			+List<clsMision> ListadoMisiones {get}
+			+clsMision SeleccionarMision{get,set}
+
+			public ListadoMisionesVM()
+			{
+
+				listadoMisiones= clsListadosDAL.public static List<clsMisiones> obtenerlistadoMisionesDAL(){}
+				completar = new DelegateCommand(completarCommandExecute,completarCommmandCanExecute)
+
+			}
+
+			private async void completarCommandExecute)()
+			{
+			}
+
+			private bool completarCommandCanExecute()
+			{
+			}
+
+
+
+		[Query]
+		ListadoMisionCompletadaVM: INotify
+			-clsMision misionCompletada;
+			-List<clsMisionCompletada> listadoMisionesCompletadas;
+			-DelegateCommand Volver;
+
+			+DelegateCommand Volver{get,}
+			+clsMision MisionCompletada{get,}
+			+List<clsMisionCompletada> ListadoMisionesCompletadas{get,set};
+
+			public ListadoMisionCompletadaVM(clsMision mision)
+			{
+				
+			}
+		
+
+
+		Utils
+			DelegateCommand
